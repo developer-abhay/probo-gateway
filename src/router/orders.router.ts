@@ -5,14 +5,14 @@ import forwardRequest from "../controllers";
 const router = express.Router();
 
 // Orders
-router.post("/buy", (req, res) => {
-  forwardRequest(req, res, "/order/buy");
+router.post("/buy", async (req, res) => {
+  await forwardRequest(req, res, "/order/buy");
 });
-router.post("/sell", (req, res) => {
-  forwardRequest(req, res, "/order/sell");
+router.post("/sell", async (req, res) => {
+  await forwardRequest(req, res, "/order/sell");
 });
-router.post("/cancel", (req, res) => {
-  forwardRequest(req, res, "/order/cancel");
+router.post("/cancel", async (req, res) => {
+  await forwardRequest(req, res, "/order/cancel");
 });
 
 export default router;
