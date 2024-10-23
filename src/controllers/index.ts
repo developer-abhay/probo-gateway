@@ -16,11 +16,8 @@ const forwardRequest = async (
   };
 
   try {
-    // Push request to the queue
-    await pushToQueue(queueName, JSON.stringify(payload));
-
     // Waiting for the response to get published on unique channel
-    await new Promise((resolve) => {
+    await new Promise(async (resolve) => {
       const callbackFunc = (message: string) => {
         const { statusCode, data } = JSON.parse(message);
         res.status(statusCode).send(data);
@@ -29,6 +26,8 @@ const forwardRequest = async (
       };
 
       subscriber.subscribe(payload._id, callbackFunc);
+      // Push request to the queue
+      await pushToQueue(queueName, JSON.stringify(payload));
     });
 
     return;

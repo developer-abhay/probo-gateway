@@ -18,7 +18,6 @@ export const connectToRedis = async () => {
 export const pushToQueue = async (queueName: string, data: string) => {
   try {
     await client.lPush(queueName, data);
-    console.log(`Data pushed to queue: ${queueName}`);
   } catch (error) {
     console.error(error);
   }

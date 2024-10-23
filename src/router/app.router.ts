@@ -16,6 +16,11 @@ router.post("/user/create/:userId", async (req, res) => {
 router.post("/symbol/create/:stockSymbol", async (req, res) => {
   await forwardRequest(req, res, "/symbol/create/:stockSymbol");
 });
+
+// Onramp Money
+router.post("/onramp/inr", async (req, res) => {
+  await forwardRequest(req, res, "/onramp/inr");
+});
 // Mint tokens
 router.post("/trade/mint", async (req, res) => {
   await forwardRequest(req, res, "/trade/mint");
